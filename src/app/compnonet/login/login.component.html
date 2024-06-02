@@ -1,0 +1,36 @@
+<span  class="btn btn-success" (click)="openModal(template)">Login</span>
+ 
+<ng-template #template>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left h1"> Login Now :</h4>
+    
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="row w-75 mx-auto">
+  <div class="modal-body">
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+     
+      <div class="form-group">
+        <label for="email">email:</label>
+         <input formControlName="email" type="email"  id="email" class="form-control mb-2">
+         <span class="text-danger" *ngIf="!loginForm.get('email')?.valid&&loginForm.get('email')?.touched">
+          enter a vaild email
+        </span>
+      </div>
+      <div class="form-group">
+        <label for="password">password:</label>
+      <input formControlName="password" type="password"  id="password" class="form-control mb-2">
+      <span class="text-danger" *ngIf="!loginForm.get('password')?.valid&&loginForm.get('password')?.touched">
+        enter a vaild  password
+      </span>
+      </div>
+     
+
+   
+      <button [disabled]="loginForm.invalid" class="btn btn-outline-success w-100" type="submit">Login</button>
+    </form>
+  </div>
+  </div>
+</ng-template>

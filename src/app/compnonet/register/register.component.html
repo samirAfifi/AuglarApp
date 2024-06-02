@@ -1,0 +1,54 @@
+<span  class="btn btn-primary" (click)="openModal(template)">Register</span>
+ 
+<ng-template #template>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left h1"> Register Now :</h4>
+    
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="row w-75 mx-auto">
+  <div class="modal-body">
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="name">name:</label>
+        <input formControlName="name" type="text"  id="name" class="form-control mb-2 "> 
+        <span class="text-danger" *ngIf="!registerForm.get('name')?.valid&&registerForm.get('name')?.touched">
+          enter a vaild name
+      </span>
+      </div>
+      <div class="form-group">
+        <label for="email">email:</label>
+         <input formControlName="email" type="email"  id="email" class="form-control mb-2">
+         <span class="text-danger" *ngIf="!registerForm.get('email')?.valid&&registerForm.get('email')?.touched">
+          enter a vaild email
+        </span>
+      </div>
+      <div class="form-group">
+        <label for="password">password:</label>
+      <input formControlName="password" type="password"  id="password" class="form-control mb-2">
+      <span class="text-danger" *ngIf="!registerForm.get('password')?.valid&&registerForm.get('password')?.touched">
+        enter a vaild  password
+      </span>
+      </div>
+      <div class="form-group">
+        <label for="rePassword">rePassword:</label>
+      <input formControlName="rePassword" type="password"  id="rePassword" class="form-control mb-2">
+      <span class="text-danger" *ngIf="!registerForm.get('rePassword')?.valid&&registerForm.get('rePassword')?.touched">
+        enter a vaild rePassword
+      </span>
+      </div>
+      <div class="form-group">
+        <label for="phone">phone:</label>
+        <input formControlName="phone" type="tel"  id="phone" class="form-control mb-2">
+        <span class="text-danger" *ngIf="!registerForm.get('phone')?.valid&&registerForm.get('phone')?.touched">
+          enter a vaild phone
+        </span>
+
+      </div>
+      <button [disabled]="registerForm.invalid" class="btn btn-outline-primary w-100" type="submit">Register</button>
+    </form>
+  </div>
+  </div>
+</ng-template>
